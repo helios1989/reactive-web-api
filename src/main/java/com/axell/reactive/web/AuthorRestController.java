@@ -29,6 +29,8 @@ public class AuthorRestController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Single<ResponseEntity<BaseWebResponse>> addAuthor(@RequestBody AddAuthorWebRequest addAuthorWebRequest) {
+        System.out.println(addAuthorWebRequest);
+        System.out.println(">>>>>>>>>");
         return authorService.addAuthor(toAddAuthorRequest(addAuthorWebRequest))
                 .subscribeOn(Schedulers.io())
                 .map(s -> ResponseEntity

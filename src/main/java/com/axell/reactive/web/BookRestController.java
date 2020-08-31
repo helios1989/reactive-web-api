@@ -32,6 +32,8 @@ public class BookRestController {
             produces = MediaType.APPLICATION_JSON_VALUE
     ) public Single<ResponseEntity<BaseWebResponse>> addBook(
         @RequestBody AddBookRequest addBookRequest) {
+    	System.out.println(addBookRequest);
+    	
         return bookService.addBook(addBookRequest).subscribeOn(Schedulers.io()).map(
             s -> ResponseEntity.created(URI.create("/api/books/" + s))
                 .body(BaseWebResponse.successNoData()));
